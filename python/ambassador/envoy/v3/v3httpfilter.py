@@ -457,7 +457,10 @@ def V3HTTPFilter_cors(cors: IRFilter, v3config: "V3Config"):
     del cors  # silence unused-variable warning
     del v3config  # silence unused-variable warning
 
-    return {"name": "envoy.filters.http.cors"}
+    return {
+        "name": "envoy.filters.http.cors",
+        "typed_config": {"@type": "type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors"},
+    }
 
 
 def V3HTTPFilter_router(router: IRFilter, v3config: "V3Config"):
