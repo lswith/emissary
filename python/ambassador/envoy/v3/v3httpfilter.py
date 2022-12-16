@@ -140,7 +140,12 @@ def V3HTTPFilter_grpc_http1_bridge(irfilter: IRFilter, v3config: "V3Config"):
     del irfilter  # silence unused-variable warning
     del v3config  # silence unused-variable warning
 
-    return {"name": "envoy.filters.http.grpc_http1_bridge"}
+    return {
+        "name": "envoy.filters.http.grpc_http1_bridge",
+        "typed_config": {
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_http1_bridge.v3.Config"
+        },
+    }
 
 
 def V3HTTPFilter_grpc_web(irfilter: IRFilter, v3config: "V3Config"):
