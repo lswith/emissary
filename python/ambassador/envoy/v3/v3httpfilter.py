@@ -152,7 +152,12 @@ def V3HTTPFilter_grpc_web(irfilter: IRFilter, v3config: "V3Config"):
     del irfilter  # silence unused-variable warning
     del v3config  # silence unused-variable warning
 
-    return {"name": "envoy.filters.http.grpc_web"}
+    return {
+        "name": "envoy.filters.http.grpc_web",
+        "typed_config": {
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb"
+        },
+    }
 
 
 def V3HTTPFilter_grpc_stats(irfilter: IRFilter, v3config: "V3Config"):
