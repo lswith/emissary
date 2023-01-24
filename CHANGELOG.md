@@ -95,7 +95,14 @@ it will be removed; but as it won't be user-visible this isn't considered a brea
   readinessProbe. The Helm chart was updated to allow setting a startupProbe on the emissary-ingress
   deployment. ([#4649])
 
+- Change: Previously, specifying backend ports by name in Ingress was not supported and would result
+  in defaulting to port 80. This allows emissary-ingress to now resolve port names for backend
+  services. If the port number cannot be resolved by the name (e.g named port in the Service doesn't
+  exist) then it defaults back  to the original behavior. (Thanks to <a
+  href="https://github.com/antonu17">Anton Ustyuzhanin</a>!). ([#4813])
+
 [#4649]: https://github.com/emissary-ingress/emissary/pull/4649
+[#4813]: https://github.com/emissary-ingress/emissary/pull/4813
 
 ## [3.4.0] January 03, 2023
 [3.4.0]: https://github.com/emissary-ingress/emissary/compare/v3.3.0...v3.4.0
